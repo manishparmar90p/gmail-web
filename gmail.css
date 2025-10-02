@@ -1,0 +1,792 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #F6F8FC;
+    font-family: Arial, sans-serif;
+}
+
+/* Layout */
+.main-content {
+    display: flex;
+    overflow: hidden;
+    height: calc(100vh - 60px);
+    position: relative;
+}
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    flex-shrink: 0;
+    padding-top: 10px;
+    transition: width 0.3s ease;
+    overflow-x: hidden;
+}
+
+/* --- Left Panel (Sidebar) --- */
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    background-color: #fff;
+    border-right: 1px solid #dadce0;
+    flex-shrink: 0;
+    padding-top: 8px;
+    /* Smooth Transition Add kiya */
+    transition: width 0.3s ease; 
+    overflow-x: hidden;
+}
+
+/* --- Collapsed State Styles --- */
+
+.left-panel.collapsed {
+    width: 70px; /* Chhota width */
+    overflow-x: hidden;
+}
+
+/* 1. Compose Button Styles (Collapsed State) */
+.left-panel.collapsed .compose-button {
+    width: 56px; 
+    height: 56px; 
+    border-radius: 50%;
+    padding: 0;
+    margin-left: 7px;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+    font-size: 0; /* Text 'compose' hide karo */
+    line-height: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 7px; /* Margin adjust kiya */
+}
+
+.left-panel.collapsed .compose-button::after {
+    content: '+'; 
+    font-size: 24px; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+
+/* 2. List Item Spacing (Collapsed State) */
+/* Saare list items ki padding adjust karo */
+.left-panel.collapsed li {
+    padding: 8px 0; /* Vertical padding theek rakha */
+    justify-content: center; /* Icons center mein aa jayenge */
+    margin-right: 0; /* Margin hata diya */
+}
+/* Active item ka background sirf icon tak rahe */
+.left-panel.collapsed li.active {
+    width: 50px; /* sirf icon jitna width */
+    margin: 2px 10px 2px 10px;
+}
+
+/* 3. Hiding Extra Content (Real Gmail ki tarah) */
+
+/* nav-list ke items ke alawa saare sections ko hide karo */
+.left-panel.collapsed .more-less-container,
+.left-panel.collapsed .hidden-options,
+.left-panel.collapsed .labels-section,
+.left-panel.collapsed .upgrade-btn-container {
+    display: none;
+}
+
+
+/* 4. Hiding Text and Count */
+.left-panel.collapsed .nav-list span,
+.left-panel.collapsed .count {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    pointer-events: none; /* Clickable na rahe */
+}
+
+/* Right side icons ko chhupao jab collapse ho (waise woh .nav-list span mein cover ho gaya hai, but double check) */
+/* .left-panel.collapsed .upgrade-arrow {
+    display: none;
+} */
+
+.right-content-area {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    height: 100%;
+}
+
+.email-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+/* Navbar */
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 1px solid #dadce0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-bar img {
+    height: 24px;
+    width: auto;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.hamburger img {
+    height: 24px;
+    cursor: pointer;
+}
+
+.logo img {
+    height: 36px;
+    width: auto;
+}
+
+.nav-middle {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #eaf1fb;
+    border-radius: 25px;
+    padding: 10px 20px;
+    flex-grow: 1;
+    max-width: 720px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: #5f6368;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.search-bar:focus-within {
+    background-color: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+        0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.search-bar img {
+    width: 22px;
+    height: 22px;
+    opacity: 0.7;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-right img {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease ;
+    margin: 0 4px;
+}
+
+.nav-right img:hover {
+    background-color: #f0f0f0;
+}
+.nav-icon-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0 4px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-icon-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.nav-icon-btn img {
+    width: 24px; /* Icon ka size */
+    height: 24px;
+}
+
+
+/* Left Panel */
+.compose-button {
+    background-color: #C2E7FF;
+    color: #0B57D0;
+    border-radius: 16px;
+    padding: 16px 24px;
+    margin: 10px 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+}
+
+/* Common list item styling for all sections */
+.nav-list li,
+.more-less-btn,
+.hidden-options li,
+.labels-section li :not(.section-heading){
+    display: flex;
+    align-items: center;
+    padding: 6.5px 24px;
+    margin-right: 12px;
+    border-radius: 0 24px 24px 0;
+    cursor: pointer;
+    margin-bottom: 2px;
+    gap: 16px;
+    list-style: none; /* remove bullet points */
+}
+
+/* Common image sizing for all list items */
+.nav-list img,
+.more-less-container img,
+.hidden-options img,
+.labels-section img {
+    width: 20px;
+    height: 20px;
+}
+
+.nav-list li.active {
+    background-color: #D3E2FD;
+    color: #0B57D0;
+    font-weight: bold;
+}
+.more-less-btn{
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.nav-list li:hover,
+.more-less-btn:hover,
+.hidden-options li:hover,
+.labels-section li:hover {
+    background-color: #F0F4F8;
+}
+.nav-list li.active .count {
+    color : #0B57D0;
+    font-weight: bold;
+}
+/* Hidden options section */
+.hidden-options {
+    display: none; /* Initially hidden */
+    flex-direction: column;
+    list-style: none;
+}
+
+.hidden-options.visible {
+    display: flex;
+}
+
+.more-less-container {
+    margin: 0;
+}
+
+/* Labels Section */
+.labels-section {
+    list-style: none;
+    padding: 0;
+}
+.labels-section li{
+    margin-top: 0;
+}
+
+.labels-section .section-heading {
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #5f6368;
+    padding: 8px 24px 0 24px;
+    margin: 0;
+    display: block;
+    margin-left: 24px;
+    font-weight: 500;
+    padding-bottom: 4px;
+}
+
+/* Upgrade button styling */
+.upgrade-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0 4px 28px;
+    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+    margin: 10px 0 0 0;
+    gap: 20px;
+}
+
+.upgrade-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.upgrade-text {
+    font-size: 14px;
+    color: #3c4043;
+}
+.upgrade-btn-container > span {
+flex: 1;
+font-size: 14px;
+color: #3c4043;
+margin-right: -10px;
+}
+.upgrade-arrow {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    margin-left: 10px;
+}
+
+.upgrade-btn-container:hover {
+    background-color: #f0f0f0;
+}
+
+/* Right Content Area */
+.toolbar {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    border-bottom: 1px solid #dadce0;
+    padding: 0 16px;
+    background-color: #F6F8FC;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.toolbar-default-icon,
+.toolbar-select-hidden-icon {
+    display: flex;
+    align-items: center;
+}
+
+.toolbar-select-hidden-icon.hidden {
+    display: none;
+}
+
+#select-all {
+    margin-right: 16px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.toolbar button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.toolbar button:hover {
+    background-color: #f1f1f1;
+}
+
+.toolbar button img {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Existing .main-toolbar ko update karo */
+
+.view-controls {
+    display: none;
+}
+
+
+.main-toolbar {
+    display: flex;
+    justify-content: space-between; /* Tabs aur Pagination ko alag-alag kone mein rakhega */
+    align-items: center;
+    height: 48px;
+    background-color: #fff;
+    border-bottom: 1px solid #dadce0;
+    padding: 0 16px; /* Padding adjust kiya */
+    position: sticky;
+    top: 48px;
+    z-index: 50;
+}
+/* Pagination Controls ke liye naya CSS */
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination-controls .page-info {
+    font-size: 12px;
+    color: #5f6368;
+    margin-right: 5px; /* Page info aur buttons ke beech thoda space */
+}
+
+.pagination-controls button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 0.2s ease;
+}
+
+.pagination-controls button:hover {
+    background-color: #f1f1f1;
+}
+
+.pagination-controls img {
+    width: 20px;
+    height: 20px;
+}
+
+
+
+
+.main-toolbar-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 32px;
+    flex-shrink: 0;
+}
+
+.main-toolbar-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    color: #5f6368;
+    padding: 14px 12px 11px 12px;
+}
+
+.main-toolbar-list li img {
+    width: 24px;
+    height: 24px;
+
+}
+
+.main-toolbar-list li:hover {
+    background-color: transparent;
+    border-bottom-color: #dadce0;
+    border-radius: 0;
+}
+
+.main-toolbar-list li.active {
+    color: #0b57d0;
+    font-weight: 500;
+    border-bottom-color: #0b57d0;
+}
+
+.email-list {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+.email-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+    font-size: 14px;
+    
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.left-side {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 150px;
+    flex-shrink: 0;
+}
+
+.left-side img {
+    width: 20px;
+    height: 20px;
+}
+
+.middle-side {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    padding-right: 120px;
+}
+
+.subject {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.preview-text {
+    color: #5f6368;
+}
+
+.right-side {
+    position: absolute;
+    font-size: 12px;
+    color: #5f6368;
+    flex-shrink: 0;
+
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50);
+    width: 100px;
+    text-align: right;
+}
+
+.action {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    padding: 0 5px;
+    gap: 0px;
+    height: 100%;
+    width: 110px;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 10;
+}
+.email-row:hover .right-side {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.email-row:hover .action {
+    display: flex;
+}
+
+.email-row:hover { 
+    box-shadow: none;
+    background-color: #F0F4F8;
+    border-bottom-color: transparent ;
+}
+
+.action img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition: backgrond-color 0.1s;
+}
+
+.action img:hover {
+    background-color: #f0f0f0;
+}
+
+.email-row.unread {
+    font-weight: bold;
+    background-color: #fff;
+}
+
+.email-row.unread .sender-name,
+.email-row.unread .subject {
+    font-weight: bold;
+}
+
+/* Compose Modal */
+.compose-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.compose-modal.hidden {
+    display: none;
+}
+
+.compose-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.compose-box input,
+.compose-box textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.compose-box textarea {
+    height: 120px;
+    resize: none;
+}
+
+.compose-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.compose-actions button {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.send-btn {
+    background: #1a73e8;
+    color: white;
+}
+
+.close-btn {
+    background: #ccc;
+}
+
+.nav-list li .count {
+    margin-left: auto;
+    background-color: transparent;
+    border-radius: 12px;
+    padding: 0 8px;
+    font-size: 13px;
+    color: #0b57d0;
+}
+
+/* --- MOBILE RESPONSIVENESS (Max 480px) --- */
+@media (max-width: 480px) {
+    /* 1. Base adjustments */
+    body {
+        font-size: 14px;
+    }
+
+    /* 2. Left Panel (Sidebar) ko chhupana */
+    .left-panel {
+        display: none; /* Sidebar ko mobile pe chupa do */
+    }
+    
+    /* 3. Navbar adjustments */
+    .nav-bar {
+        padding: 0 8px; /* Navbar ki padding kam karo */
+        height: 50px; /* Navbar ki height thodi kam kar sakte hain */
+    }
+
+    .nav-left {
+        gap: 8px; /* Logo aur Hamburger ke beech ki space kam karo */
+    }
+    
+    .logo img {
+        height: 32px; /* Logo thoda chhota kar do */
+    }
+    
+    .nav-right {
+        gap: 0;
+    }
+
+    .nav-right img {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* 4. Search Bar aur Tabs ka removal / adjustment */
+    .nav-middle {
+        display: none; /* Search bar ko chupa do */
+    }
+
+    .main-toolbar {
+        /* Default tabs (Primary, Social, Promotions) ko chupa do */
+        display: none; 
+    }
+
+    /* 5. Email List / Rows adjustments */
+    .email-row {
+        padding: 10px 10px; /* Email row ki horizontal padding kam karo */
+    }
+
+    /* Email row ke left side elements (checkbox, star, sender) */
+    .left-side {
+        width: 100px; /* Sender name ke liye kam space rakho */
+        gap: 10px;
+    }
+
+    /* Email middle part (Subject and Preview Text) */
+    .middle-side {
+        padding-right: 0; /* Extra padding hatao */
+        /* Flex grow theek rakho */
+    }
+
+    /* Right Side (Date/Time) ko chhupana */
+    .right-side {
+        display: none; /* Date/Time ko chupa do, yeh mobile pe space khata hai */
+    }
+    
+    /* Hover action icons ko bhi chupa do (mobile pe hover kaam nahi karta) */
+    .action {
+        display: none !important;
+    }
+}

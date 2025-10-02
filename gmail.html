@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail Clone</title>
+    <link rel="stylesheet" href="gmail.css" /> 
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <div class="nav-left">
+            <div class="hamburger">
+                <img src="gmail_bar.svg" alt="menu" /> 
+            </div>
+            <div class="logo">
+                <img src="gmail_logo.png" alt="gmail logo"/> 
+            </div>
+        </div>
+        
+        <div class="nav-middle">
+            <div class="search-bar">
+                <img src="searchbar.svg" alt="search" />
+                <input type="search" placeholder="search mail" />
+            </div>
+        
+        </div>
+        
+        <div class="nav-right">
+            <img src="helpp.png" alt="help">
+            <img src="gmailright_setting.png" alt="setting">
+            <img src="star.png" alt="star">
+            <img src="dots.png" alt="dots">
+            <img src="profile.png" alt="profile">
+        </div>
+    </nav> 
+    
+    <div class="main-content">
+
+        <div class="left-panel">
+            <button class="compose-button">+ compose </button>
+            <ul class="nav-list">
+                <li class="active">
+                    <img src="inbox.png" alt="inbox" />
+                    <span>inbox</span>
+                    <span class="count">86</span>
+                </li>
+                <li>
+                    <img src="starred.png" alt="starred" />
+                    <span>starred</span>
+                </li>
+                <li>
+                    <img src="snozzedd.png" alt="snoozed" />
+                    <span>snoozed</span>
+                </li>
+                <li>
+                    <img src="sent.png" alt="sent" />
+                    <span>sent</span>
+                </li>
+                <li>
+                    <img src="drafts.png" alt="drafts" />
+                    <span>drafts</span>
+                </li>
+            </ul>
+
+            <ul class="more-less-container">
+                <li class="more-less-btn nav-list-item">
+                    <img src="downarrow.svg" alt="down arrow" /> 
+                    <span>more</span>
+                </li>
+            </ul>
+
+            <ul class="hidden-options">
+                <li>
+                    <img src="chats.png" alt="chat" />
+                    <span>chats</span>
+                </li>
+                <li>
+                    <img src="label_important.png" alt="important" />
+                    <span>important</span>
+                </li>
+                <li>
+                    <img src="scheduled.png" alt="scheduled" />
+                    <span>scheduled</span>
+                </li>
+                <li>
+                    <img src="all_mails.svg" alt="allmail" />
+                    <span>allmails</span>
+                </li>
+                <li>
+                    <img src="spam.png" alt="spam" />
+                    <span>spam</span>
+                </li>
+                <li>
+                    <img src="bin.png" alt="bin" />
+                    <span>bin</span>
+                </li>
+            </ul>
+            
+            <ul class="labels-section">
+                <li class="section-heading nav-list-item">
+                    <span>categories</span>
+                </li>
+                <li>
+                    <img src="categories.png" alt="categories" />
+                    <span>categories</span>
+                </li>
+                <li>
+                    <img src="manage_subscription.png" alt="manage_subscription" />
+                    <span>manage_subscription</span>
+                </li>
+                <li>
+                    <img src="manage_labels.png" alt="manage_labels" />
+                    <span>manage_labels</span>
+                </li>
+            </ul>
+
+            <div class="upgrade-btn-container">
+                <img src="upgradeoo.png" alt="upgrade" class="upgrade-icon" />
+                <span>Upgrade</span>
+                <img src="upgrade_right.png" alt="upgrade_arrow" class="upgrade-arrow"  />
+            </div>
+            
+        </div>
+    
+        <div class="right-content-area">
+
+            <div class="toolbar">
+                <div class="toolbar-default-icon">
+                    <input type="checkbox" id="select-all">
+                    <button class="refresh-btn">
+                        <img src="refresh.png" alt="refresh_btn" />
+                    </button>
+                    <button class="dots-btn">
+                        <img src="more_toolbar.png" alt="dots_btn" />
+                    </button>
+                </div>
+                <div class="toolbar-select-hidden-icon hidden">
+                    <button class="archive-btn">
+                        <img src="archivee.png" alt="archive-btn" />
+                    </button>
+                    <button class="report-spam">
+                        <img src="report_spam.png" alt="report-spam_btn" />
+                    </button>
+                    <button class="delete">
+                        <img src="delete.png" alt="delete_btn" />
+                    </button>
+                    <button class="markunread">
+                        <img src="mark-as-read.png" alt="mark_read" />
+                    </button>
+                    <button class="move-to">
+                        <img src="move_to.png" alt="move_to" />
+                    </button>
+                </div>
+
+
+                <div class="view-controls">
+                    <button class="list-view-btn">
+                        <img src="list_view.png" alt="list view" /> 
+                    </button>
+                    <button class="grid-view-btn">
+                        <img src="grid_view.png" alt="grid view" />
+                    </button>
+                </div>
+            </div>
+
+            <div class="main-toolbar">
+                <ul class="main-toolbar-list">
+                    <li data-category="primary" class="active">
+                        <img src="primary.png" alt="Primary" /> 
+                        <span>Primary</span>
+                    </li>
+                    <li data-category="promotions">
+                        <img src="promotions.png" alt="Promotions" />
+                        <span>Promotions</span>
+                    </li>
+                    <li data-category="social">
+                        <img src="social.png" alt="Social" />
+                        <span>Social</span>
+                    </li>
+                    <li data-category="updates">
+                        <img src="updates.png" alt="Updates" />
+                        <span>Updates</span>
+                    </li>
+                </ul>
+
+                <div class="pagination-controls">
+                    <span class="page-info">1-8 of 8</span> 
+                    <button class="prev-btn">
+                        <img src="arrowl.png" alt="Previous" /> 
+                    </button>
+                    <button class="next-btn">
+                        <img src="arrowrr.png" alt="Next" /> 
+                    </button>
+                </div>
+            </div>
+
+            <div class="email-list">
+                <div class="email-row unread" data-category="primary">
+                    <div class="left-side">
+                        <div><input type="checkbox" class="email-checkbox" /></div>
+                        <div><img src="starred.png" alt="starred" /></div>
+                        <div class="sender-name">Google</div>
+                    </div>
+                    <div class="middle-side">
+                        <div class="subject">New Security Alert</div>
+                        <div class="preview-text">We've noticed a new sign-in to your account.</div>
+                    </div>
+                    <div class="right-side">
+                        <div class="date">4:30 AM</div>
+                    </div>
+                    <div class="action">
+                        <img src="archivee.png" alt="archive" />
+                        <img src="delete.png" alt="delete" />
+                        <img src="mark-as-read.png" alt="mark-as-read" />
+                        <img src="snooze.png" alt="snooze" />
+                    </div>
+                </div>
+
+                
+                <div class="email-row" data-category="promotions">
+                    <div class="left-side">
+                        <div><input type="checkbox" class="email-checkbox" /></div>
+                        <div><img src="starred.png" alt="starred" /></div>
+                        <div class="sender-name">LinkedIn</div>
+                    </div>
+                    <div class="middle-side">
+                        <div class="subject">You appeared in 5 searches this week</div>
+                        <div class="preview-text">See who's looking at your profile.</div>
+                    </div>
+                    <div class="right-side">
+                        <div class="date">Sep 24</div>
+                    </div>
+                    <div class="action">
+                        <img src="archivee.png" alt="archive" />
+                        <img src="delete.png" alt="delete" />
+                        <img src="mark-as-read.png" alt="mark-as-read" />
+                        <img src="snooze.png" alt="snooze" />
+                    </div>
+                </div>
+
+                <div class="email-row" data-category="updates">
+                    <div class="left-side">
+                        <div><input type="checkbox" class="email-checkbox" /></div>
+                        <div><img src="starred.png" alt="starred" /></div>
+                        <div class="sender-name">NPTEL</div>
+                    </div>
+                    <div class="middle-side">
+                        <div class="subject">New course enrollment confirmation</div>
+                        <div class="preview-text">You have successfully enrolled for the 'Data Structures and Algorithms' course.</div>
+                    </div>
+                    <div class="right-side">
+                        <div class="date">Sep 20</div>
+                    </div>
+                    <div class="action">
+                        <img src="archivee.png" alt="archive" />
+                        <img src="delete.png" alt="delete" />
+                        <img src="mark-as-read.png" alt="mark-as-read" />
+                        <img src="snooze.png" alt="snooze" />
+                    </div>
+                </div>
+
+                <div class="email-row unread" data-category="promotions">
+                    <div class="left-side">
+                        <div><input type="checkbox" class="email-checkbox" /></div>
+                        <div><img src="starred.png" alt="starred" /></div>
+                        <div class="sender-name">LeetCode Daily</div>
+                    </div>
+                    <div class="middle-side">
+                        <div class="subject">Daily Challenge: Two Sum!</div>
+                        <div class="preview-text">Practice makes perfect. Try today's daily challenge to boost your skills.</div>
+                    </div>
+                    <div class="right-side">
+                        <div class="date">Sep 19</div>
+                    </div>
+                    <div class="action">
+                        <img src="archivee.png" alt="archive" />
+                        <img src="delete.png" alt="delete" />
+                        <img src="mark-as-read.png" alt="mark-as-read" />
+                        <img src="snooze.png" alt="snooze" />
+                    </div>
+                </div>
+
+                <div class="email-row" data-category="updates">
+                    <div class="left-side">
+                        <div><input type="checkbox" class="email-checkbox" /></div>
+                        <div><img src="starred.png" alt="starred" /></div>
+                        <div class="sender-name">BookMyShow</div>
+                    </div>
+                    <div class="middle-side">
+                        <div class="subject">Your Event Tickets for 'Tech Summit 2025'</div>
+                        <div class="preview-text">Here is your e-ticket attached. Gate opens at 9 AM tomorrow.</div>
+                    </div>
+                    <div class="right-side">
+                        <div class="date">Sep 18</div>
+                    </div>
+                    <div class="action">
+                        <img src="archivee.png" alt="archive" />
+                        <img src="delete.png" alt="delete" />
+                        <img src="mark-as-read.png" alt="mark-as-read" />
+                        <img src="snooze.png" alt="snooze" />
+                    </div>
+                </div>
+                
+                <div class="email-row" data-category="social">
+                    <div class="left-side">
+                        <div><input type="checkbox" class="email-checkbox" /></div>
+                        <div><img src="starred.png" alt="starred" /></div>
+                        <div class="sender-name">Spotify</div>
+                    </div>
+                    <div class="middle-side">
+                        <div class="subject">Discover Weekly just got updated!</div>
+                        <div class="preview-text">New music recommendations for you.</div>
+                    </div>
+                    <div class="right-side">
+                        <div class="date">Sep 23</div>
+                    </div>
+                    <div class="action">
+                        <img src="archivee.png" alt="archive" />
+                        <img src="delete.png" alt="delete" />
+                        <img src="mark-as-read.png" alt="mark-as-read" />
+                        <img src="snooze.png" alt="snooze" />
+                    </div>
+                </div>
+
+                <div class="email-row" data-category="promotions">
+                    <div class="left-side">
+                        <div><input type="checkbox" class="email-checkbox" /></div>
+                        <div><img src="starred.png" alt="starred" /></div>
+                        <div class="sender-name">Amazon</div>
+                    </div>
+                    <div class="middle-side">
+                        <div class="subject">Your order has been delivered</div>
+                        <div class="preview-text">The package for your order no. 12345 has been delivered.</div>
+                    </div>
+                    <div class="right-side">
+                        <div class="date">Sep 22</div>
+                    </div>
+                    <div class="action">
+                        <img src="archivee.png" alt="archive" />
+                        <img src="delete.png" alt="delete" />
+                        <img src="mark-as-read.png" alt="mark-as-read" />
+                        <img src="snooze.png" alt="snooze" />
+                    </div>
+                </div>
+
+                <div class="email-row" data-category="social">
+                    <div class="left-side">
+                        <div><input type="checkbox" class="email-checkbox" /></div>
+                        <div><img src="starred.png" alt="starred" /></div>
+                        <div class="sender-name">Zomato</div>
+                    </div>
+                    <div class="middle-side">
+                        <div class="subject">Review your last order</div>
+                        <div class="preview-text">Rate your experience and help others find great food!</div>
+                    </div>
+                    <div class="right-side">
+                        <div class="date">Sep 21</div>
+                    </div>
+                    <div class="action">
+                        <img src="archivee.png" alt="archive" />
+                        <img src="delete.png" alt="delete" />
+                        <img src="mark-as-read.png" alt="mark-as-read" />
+                        <img src="snooze.png" alt="snooze" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="gmail.js"></script> 
+</body>
+</html>
